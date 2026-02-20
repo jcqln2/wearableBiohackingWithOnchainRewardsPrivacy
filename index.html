@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -110,8 +111,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
         }
 
         /* RULE 4: Design dialogs to yield closure - Clear action button */
@@ -414,18 +422,244 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Chat list table */
+        .chat-list {
+            border: 2px solid #30363d;
+            border-radius: 6px;
+            background: #161b22;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .chat-list-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-list-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #c9d1d9;
+            letter-spacing: 1px;
+        }
+
+        .chat-list-count {
+            font-size: 11px;
+            color: #8b949e;
+            background: #21262d;
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+
+        .chat-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .chat-table th {
+            padding: 10px 16px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8b949e;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+            background: #0d1117;
+            font-weight: bold;
+        }
+
+        .chat-table td {
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #c9d1d9;
+            border-bottom: 1px solid #21262d;
+            vertical-align: middle;
+        }
+
+        .chat-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .chat-table tr:hover {
+            background: rgba(88, 166, 255, 0.04);
+        }
+
+        .chat-table tr.active-chat {
+            background: rgba(63, 185, 80, 0.06);
+        }
+
+        .chat-table tr.active-chat:hover {
+            background: rgba(63, 185, 80, 0.1);
+        }
+
+        .live-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .live-dot.live {
+            background: #3fb950;
+            box-shadow: 0 0 6px rgba(63, 185, 80, 0.6);
+            animation: pulse-live 1.5s ease-in-out infinite;
+        }
+
+        .live-dot.ended {
+            background: #484f58;
+        }
+
+        @keyframes pulse-live {
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 6px rgba(63, 185, 80, 0.6);
+            }
+
+            50% {
+                opacity: 0.7;
+                box-shadow: 0 0 12px rgba(63, 185, 80, 0.9);
+            }
+        }
+
+        .nft-placeholder {
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            background: linear-gradient(135deg, #21262d 0%, #30363d 100%);
+            border: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #484f58;
+        }
+
+        .chat-empty {
+            padding: 32px 20px;
+            text-align: center;
+            color: #484f58;
+            font-size: 13px;
+        }
+
+        .chat-duration-live {
+            color: #3fb950;
+            font-weight: bold;
+        }
+
+        /* Target address input */
+        .target-address-bar {
+            border: 2px solid #30363d;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #161b22;
+            border-radius: 6px;
+        }
+
+        .target-address-bar label {
+            font-size: 13px;
+            font-weight: bold;
+            color: #c9d1d9;
+            white-space: nowrap;
+            letter-spacing: 1px;
+        }
+
+        .target-address-bar input {
+            width: 200px;
+            padding: 8px 12px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            color: #c9d1d9;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .target-address-bar input:focus {
+            border-color: #58a6ff;
+        }
+
+        .target-address-bar input.saved {
+            border-color: #3fb950;
+        }
+
+        .target-address-bar .ok-btn {
+            background: #238636;
+            border: 2px solid #2ea043;
+            color: #fff;
+            padding: 8px 16px;
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 4px;
+            min-width: auto;
+            transition: all 0.2s;
+        }
+
+        .target-address-bar .ok-btn:hover {
+            background: #2ea043;
+        }
+
+        .target-address-bar .addr-status {
+            font-size: 11px;
+            color: #8b949e;
+        }
+
+        .target-address-bar .addr-status.ok {
+            color: #3fb950;
+        }
+
+        .nft-link {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .nft-link:hover {
+            text-decoration: underline;
+        }
+
+        .nft-minting {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #8b949e;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>Vibe Tracker</h1>
             <div class="subtitle">Social Interaction Monitor v1.0</div>
             <div class="instructions">
-                <strong>Quick Start:</strong> Click "Connect to Device" below. Select "VibeTracker" from the Bluetooth pairing menu. Your Arduino must be powered on and within range.
+                <strong>Quick Start:</strong> Click "Connect to Device" below. Select "VibeTracker" from the Bluetooth
+                pairing menu. Your Arduino must be powered on and within range.
             </div>
+        </div>
+
+        <div class="target-address-bar">
+            <label>TARGET ADDRESS</label>
+            <input type="text" id="targetAddressInput" placeholder="0x..." maxlength="42" spellcheck="false" />
+            <button class="ok-btn" id="saveAddressBtn">OK</button>
+            <span class="addr-status" id="addrStatus"></span>
         </div>
 
         <div class="status-bar">
@@ -437,6 +671,41 @@
                 </div>
             </div>
             <button id="connectBtn">Connect to Device</button>
+        </div>
+
+        <div id="silenceCountdown"
+            style="display:none; border:2px solid #30363d; padding:12px 20px; margin-bottom:24px; background:#161b22; border-radius:6px;">
+            <div
+                style="font-size:12px; color:#8b949e; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:bold; letter-spacing:1px; text-transform:uppercase;">Time to next chat</span>
+                <span id="silenceSeconds" style="color:#f0883e; font-weight:bold; font-size:14px;">15s</span>
+            </div>
+            <div style="height:6px; background:#21262d; border-radius:3px; overflow:hidden;">
+                <div id="silenceBar"
+                    style="height:100%; width:100%; background:#f0883e; border-radius:3px; transition:width 1s linear;">
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-list">
+            <div class="chat-list-header">
+                <div class="chat-list-title">Chat Sessions</div>
+                <div class="chat-list-count" id="chatListCount">0 chats</div>
+            </div>
+            <table class="chat-table" id="chatTable">
+                <thead>
+                    <tr>
+                        <th style="width:50px">Live</th>
+                        <th style="width:60px">#</th>
+                        <th>Duration</th>
+                        <th>Laughs</th>
+                        <th style="width:60px">NFT</th>
+                    </tr>
+                </thead>
+                <tbody id="chatTableBody">
+                </tbody>
+            </table>
+            <div class="chat-empty" id="chatEmpty">No chats yet — connect to start tracking</div>
         </div>
 
         <div class="help-section" id="helpSection">
@@ -451,7 +720,7 @@
 
         <div class="grid">
             <div class="card">
-                <div class="card-header">Today's Chat</div>
+                <div class="card-header">Today's Chat Total</div>
                 <div class="card-value" id="todayChat">0</div>
                 <div class="card-label">seconds of conversation</div>
                 <div class="comparison neutral" id="chatComparison">
@@ -461,12 +730,22 @@
             </div>
 
             <div class="card">
-                <div class="card-header">Today's Laughter</div>
+                <div class="card-header">Today's Laughter Total</div>
                 <div class="card-value" id="todayLaughs">0</div>
                 <div class="card-label">laughter events detected</div>
                 <div class="comparison neutral" id="laughComparison">
                     <span class="comparison-icon">−</span>
                     <span>No previous data available</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Chats Today</div>
+                <div class="card-value" id="todayChats">0</div>
+                <div class="card-label">conversations detected</div>
+                <div id="chatStatusIndicator"
+                    style="font-size:13px; margin-top:12px; padding:8px 12px; border-radius:4px; background:#21262d; display:flex; align-items:center; gap:8px;">
+                    <span style="color:#8b949e;">No active conversation</span>
                 </div>
             </div>
         </div>
@@ -521,18 +800,47 @@
         let device;
         let chatCharacteristic;
         let laughCharacteristic;
+        let silenceCharacteristic;
         let storageData = {
             dailyData: {},
             weeklyData: {},
-            monthlyData: {}
+            monthlyData: {},
+            chats: []
         };
+        let activeChat = null;
+        let durationTimer = null;
+        let nextChatId = 1;
+
+        // Silence-based chat end detection (15s timeout)
+        const CHAT_SILENCE_TIMEOUT_MS = 15 * 1000;
+        let lastChatValue = null;
+        let chatSilenceTimer = null;
+        let silenceCountdownInterval = null;
+        let silenceStartedAt = null;
 
         // RULE 8: Reduce short-term memory load - Load data on startup
         function loadData() {
             const saved = localStorage.getItem('vibeTrackerData');
             if (saved) {
                 storageData = JSON.parse(saved);
+                // Ensure chats array exists (migration from older data)
+                if (!storageData.chats) storageData.chats = [];
+                // Close any orphaned chats left open from a previous session
+                // (on page load, no BLE connection exists so nothing can be live)
+                let hadOrphans = false;
+                storageData.chats.forEach(chat => {
+                    if (chat.endTime === null) {
+                        chat.endTime = chat.startTime;
+                        hadOrphans = true;
+                    }
+                });
+                if (hadOrphans) saveData();
+                // Set next ID from existing chats
+                if (storageData.chats.length > 0) {
+                    nextChatId = Math.max(...storageData.chats.map(c => c.id)) + 1;
+                }
                 updateAllDisplays();
+                renderChatList();
             }
         }
 
@@ -571,7 +879,7 @@
             `;
             terminal.appendChild(line);
             terminal.scrollTop = terminal.scrollHeight;
-            
+
             // Keep log manageable (max 50 entries)
             while (terminal.children.length > 50) {
                 terminal.removeChild(terminal.firstChild);
@@ -581,11 +889,12 @@
         // RULE 3: Informative feedback - Update all displays
         function updateAllDisplays() {
             const today = getDateKey();
-            const todayData = storageData.dailyData[today] || { chat: 0, laughs: 0 };
-            
+            const todayData = storageData.dailyData[today] || { chat: 0, laughs: 0, sessions: [] };
+
             document.getElementById('todayChat').textContent = todayData.chat;
             document.getElementById('todayLaughs').textContent = todayData.laughs;
-            
+            document.getElementById('todayChats').textContent = storageData.chats.length;
+
             updateComparisons(todayData.chat, todayData.laughs);
         }
 
@@ -593,13 +902,13 @@
         function updateComparisons(chatSeconds, laughEvents) {
             const today = getDateKey();
             const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-            
+
             // Store today's data
             if (!storageData.dailyData[today]) {
                 storageData.dailyData[today] = { chat: 0, laughs: 0 };
             }
             storageData.dailyData[today] = { chat: chatSeconds, laughs: laughEvents };
-            
+
             // Chat comparison
             const chatComp = document.getElementById('chatComparison');
             if (storageData.dailyData[yesterday]) {
@@ -609,7 +918,7 @@
                 chatComp.className = 'comparison neutral';
                 chatComp.innerHTML = '<span class="comparison-icon">−</span><span>No previous data available</span>';
             }
-            
+
             // Laugh comparison
             const laughComp = document.getElementById('laughComparison');
             if (storageData.dailyData[yesterday]) {
@@ -619,7 +928,7 @@
                 laughComp.className = 'comparison neutral';
                 laughComp.innerHTML = '<span class="comparison-icon">−</span><span>No previous data available</span>';
             }
-            
+
             saveData();
         }
 
@@ -637,102 +946,197 @@
         }
 
         // RULE 4: Design dialogs to yield closure - Clear connection flow
-       async function connectDevice() {
-    const btn = document.getElementById('connectBtn');
-    const statusDot = document.getElementById('statusDot');
-    const statusText = document.getElementById('statusText');
-    const statusSubtext = document.getElementById('statusSubtext');
-    
-    try {
-        // RULE 3: Informative feedback - Show loading state
-        btn.innerHTML = '<span class="spinner"></span> Connecting...';
-        btn.disabled = true;
-        log('Scanning for VibeTracker device...', 'INFO');
-        
-        // FIXED: Only ONE requestDevice call with lowercase UUIDs
-        device = await navigator.bluetooth.requestDevice({
-        filters: [{
-        services: ['19b10000-e8f2-537e-4f6c-d104768a1214']
-            }]
-        });
+        async function connectDevice() {
+            const btn = document.getElementById('connectBtn');
+            const statusDot = document.getElementById('statusDot');
+            const statusText = document.getElementById('statusText');
+            const statusSubtext = document.getElementById('statusSubtext');
 
-        log(`Device found: ${device.name}`, 'INFO');
-        
-        const server = await device.gatt.connect();
-        log('Establishing secure connection...', 'INFO');
-        
-        // FIXED: Lowercase UUIDs
-        const service = await server.getPrimaryService('19b10000-e8f2-537e-4f6c-d104768a1214');
-        
-        chatCharacteristic = await service.getCharacteristic('19b10001-e8f2-537e-4f6c-d104768a1214');
-        laughCharacteristic = await service.getCharacteristic('19b10002-e8f2-537e-4f6c-d104768a1214');
-        
-        await chatCharacteristic.startNotifications();
-        await laughCharacteristic.startNotifications();
-        
-        chatCharacteristic.addEventListener('characteristicvaluechanged', handleChatUpdate);
-        laughCharacteristic.addEventListener('characteristicvaluechanged', handleLaughUpdate);
-        
-        // RULE 4: Yield closure - Connection complete feedback
-        statusDot.classList.add('connected');
-        statusText.textContent = 'Connected';
-        statusSubtext.textContent = 'Receiving data every 5 seconds';
-        btn.textContent = 'Disconnect';
-        btn.className = 'disconnect';
-        btn.disabled = false;
-        
-        log('Connection successful. Streaming data...', 'SUCCESS');
-        
-        // Hide help section when connected
-        document.getElementById('helpSection').style.display = 'none';
-        
-    } catch (error) {
-        // RULE 5: Prevent errors - Clear error messages
-        log(`Connection failed: ${error.message}`, 'ERROR');
-        btn.textContent = 'Connect to Device';
-        btn.disabled = false;
-        statusText.textContent = 'Connection Failed';
-        statusSubtext.textContent = 'Click to retry';
-        console.error(error);
-    }
-}
+            try {
+                // RULE 3: Informative feedback - Show loading state
+                btn.innerHTML = '<span class="spinner"></span> Connecting...';
+                btn.disabled = true;
+                log('Scanning for VibeTracker device...', 'INFO');
 
-        // Handle updates
+                // FIXED: Only ONE requestDevice call with lowercase UUIDs
+                device = await navigator.bluetooth.requestDevice({
+                    filters: [{
+                        services: ['19b10000-e8f2-537e-4f6c-d104768a1214']
+                    }]
+                });
+
+                log(`Device found: ${device.name}`, 'INFO');
+
+                const server = await device.gatt.connect();
+                log('Establishing secure connection...', 'INFO');
+
+                // FIXED: Lowercase UUIDs
+                const service = await server.getPrimaryService('19b10000-e8f2-537e-4f6c-d104768a1214');
+
+                chatCharacteristic = await service.getCharacteristic('19b10001-e8f2-537e-4f6c-d104768a1214');
+                laughCharacteristic = await service.getCharacteristic('19b10002-e8f2-537e-4f6c-d104768a1214');
+                silenceCharacteristic = await service.getCharacteristic('19b10003-e8f2-537e-4f6c-d104768a1214');
+
+                await chatCharacteristic.startNotifications();
+                await laughCharacteristic.startNotifications();
+                await silenceCharacteristic.startNotifications();
+
+                chatCharacteristic.addEventListener('characteristicvaluechanged', handleChatUpdate);
+                laughCharacteristic.addEventListener('characteristicvaluechanged', handleLaughUpdate);
+                silenceCharacteristic.addEventListener('characteristicvaluechanged', handleSilenceUpdate);
+
+                // RULE 4: Yield closure - Connection complete feedback
+                statusDot.classList.add('connected');
+                statusText.textContent = 'Connected';
+                statusSubtext.textContent = 'Receiving data every 5 seconds';
+                btn.textContent = 'Disconnect';
+                btn.className = 'disconnect';
+                btn.disabled = false;
+
+                log('Connection successful. Streaming data...', 'SUCCESS');
+
+                // Hide help section when connected
+                document.getElementById('helpSection').style.display = 'none';
+
+                // Chat sessions now start automatically via silence detection
+                // when chatSeconds begins incrementing
+                lastChatValue = null;
+
+            } catch (error) {
+                // RULE 5: Prevent errors - Clear error messages
+                log(`Connection failed: ${error.message}`, 'ERROR');
+                btn.textContent = 'Connect to Device';
+                btn.disabled = false;
+                statusText.textContent = 'Connection Failed';
+                statusSubtext.textContent = 'Click to retry';
+                console.error(error);
+            }
+        }
+
+        // Handle updates — silence-based chat session detection
         function handleChatUpdate(event) {
             const value = event.target.value.getInt32(0, true);
             document.getElementById('todayChat').textContent = value;
-            
+
             const laughs = parseInt(document.getElementById('todayLaughs').textContent) || 0;
             updateComparisons(value, laughs);
-            
+
+            // Detect whether chatSeconds is incrementing (conversation happening)
+            if (lastChatValue !== null && value > lastChatValue) {
+                // Chat activity detected
+                if (!activeChat) {
+                    // Start a new chat session
+                    startNewChat();
+                }
+                // Reset the silence timer every time we see activity
+                resetSilenceTimer();
+            }
+            lastChatValue = value;
+
+            // Update active chat data (per-session delta)
+            if (activeChat) {
+                activeChat.chatSeconds = value - (activeChat._baseChatSeconds || 0);
+                renderChatList();
+                saveData();
+            }
+
             log(`Chat update: ${value} seconds`, 'INFO');
         }
 
         function handleLaughUpdate(event) {
             const value = event.target.value.getInt32(0, true);
             document.getElementById('todayLaughs').textContent = value;
-            
+
             const chat = parseInt(document.getElementById('todayChat').textContent) || 0;
             updateComparisons(chat, value);
-            
+
+            // Update active chat (per-session delta)
+            if (activeChat) {
+                activeChat.laughs = value - (activeChat._baseLaughs || 0);
+                renderChatList();
+                saveData();
+            }
+
             log(`Laughter update: ${value} events`, 'INFO');
+        }
+
+        function handleSilenceUpdate(event) {
+            const value = event.target.value.getInt32(0, true);
+            log(`Silence update: ${value} seconds`, 'INFO');
+        }
+
+        // Silence timer: if no chat increment for 15s, end the active chat
+        function resetSilenceTimer() {
+            if (chatSilenceTimer) clearTimeout(chatSilenceTimer);
+            stopSilenceCountdown();
+
+            // Start the visual countdown
+            silenceStartedAt = Date.now();
+            updateSilenceCountdownUI();
+            document.getElementById('silenceCountdown').style.display = 'block';
+            silenceCountdownInterval = setInterval(updateSilenceCountdownUI, 250);
+
+            chatSilenceTimer = setTimeout(() => {
+                stopSilenceCountdown();
+                if (activeChat) {
+                    log('15s of silence detected — ending conversation', 'INFO');
+                    endActiveChat();
+                    // Immediately start a new chat if still connected
+                    if (device && device.gatt.connected) {
+                        startNewChat();
+                    }
+                }
+            }, CHAT_SILENCE_TIMEOUT_MS);
+        }
+
+        function stopSilenceCountdown() {
+            if (silenceCountdownInterval) {
+                clearInterval(silenceCountdownInterval);
+                silenceCountdownInterval = null;
+            }
+            silenceStartedAt = null;
+            document.getElementById('silenceCountdown').style.display = 'none';
+            document.getElementById('silenceBar').style.width = '100%';
+            document.getElementById('silenceSeconds').textContent = '15s';
+        }
+
+        function updateSilenceCountdownUI() {
+            if (!silenceStartedAt) return;
+            const elapsed = Date.now() - silenceStartedAt;
+            const remaining = Math.max(0, CHAT_SILENCE_TIMEOUT_MS - elapsed);
+            const pct = (remaining / CHAT_SILENCE_TIMEOUT_MS) * 100;
+            const sec = Math.ceil(remaining / 1000);
+            document.getElementById('silenceBar').style.width = pct + '%';
+            document.getElementById('silenceSeconds').textContent = sec + 's';
+            // Color shift: orange → red as it gets close
+            const bar = document.getElementById('silenceBar');
+            if (sec <= 5) {
+                bar.style.background = '#f85149';
+            } else {
+                bar.style.background = '#f0883e';
+            }
         }
 
         // RULE 6: Permit easy reversal - Disconnect function
         async function disconnectDevice() {
             if (device && device.gatt.connected) {
+                // Clear silence timer and end any active chat
+                if (chatSilenceTimer) clearTimeout(chatSilenceTimer);
+                if (activeChat) endActiveChat();
+                lastChatValue = null;
+
                 await device.gatt.disconnect();
-                
+
                 document.getElementById('statusDot').classList.remove('connected');
                 document.getElementById('statusText').textContent = 'Not Connected';
                 document.getElementById('statusSubtext').textContent = 'Click button to connect →';
-                
+
                 const btn = document.getElementById('connectBtn');
                 btn.textContent = 'Connect to Device';
                 btn.className = '';
-                
+
                 log('Device disconnected', 'INFO');
-                
+
                 // Show help section again
                 document.getElementById('helpSection').style.display = 'block';
             }
@@ -747,7 +1151,7 @@
             link.href = url;
             link.download = `vibe-tracker-data-${getDateKey()}.json`;
             link.click();
-            
+
             log('Data exported successfully', 'SUCCESS');
         }
 
@@ -761,10 +1165,10 @@
                 };
                 saveData();
                 updateAllDisplays();
-                
+
                 document.getElementById('todayChat').textContent = '0';
                 document.getElementById('todayLaughs').textContent = '0';
-                
+
                 log('All data cleared', 'INFO');
             }
         }
@@ -794,9 +1198,212 @@
         document.getElementById('clearBtn').addEventListener('click', clearAllData);
         document.getElementById('clearLogBtn').addEventListener('click', clearLog);
 
+        // ---- Chat session management ----
+
+        function startNewChat() {
+            // Capture current cumulative values as baselines for this session
+            const baseChat = parseInt(document.getElementById('todayChat').textContent) || 0;
+            const baseLaughs = parseInt(document.getElementById('todayLaughs').textContent) || 0;
+            activeChat = {
+                id: nextChatId++,
+                startTime: Date.now(),
+                endTime: null,
+                laughs: 0,
+                chatSeconds: 0,
+                nftImage: null,
+                _baseChatSeconds: baseChat,
+                _baseLaughs: baseLaughs
+            };
+            storageData.chats.push(activeChat);
+            saveData();
+            renderChatList();
+
+            // Start duration timer (update every second)
+            if (durationTimer) clearInterval(durationTimer);
+            durationTimer = setInterval(() => {
+                const duration = Date.now() - activeChat.startTime;
+                if (duration >= 60000) { // 1 minute max duration
+                    log(`Chat #${activeChat.id} reached 1 min limit, starting new chat...`, 'INFO');
+                    endActiveChat();
+                    // Because device is still connected, automatically start the next session
+                    startNewChat();
+                } else {
+                    renderChatList();
+                }
+            }, 1000);
+
+            log(`Chat #${activeChat.id} started`, 'SUCCESS');
+        }
+
+        function endActiveChat() {
+            if (!activeChat) return;
+            activeChat.endTime = Date.now();
+            const duration = activeChat.endTime - activeChat.startTime;
+            log(`Chat #${activeChat.id} ended — ${formatDuration(duration)}, ${activeChat.laughs} laughs`, 'INFO');
+
+            // Mint NFT for this chat
+            mintNFT(activeChat.id, duration, activeChat.laughs);
+
+            activeChat = null;
+
+            if (durationTimer) {
+                clearInterval(durationTimer);
+                durationTimer = null;
+            }
+            saveData();
+            renderChatList();
+        }
+
+        async function mintNFT(chatId, duration, laughs) {
+            const targetAddress = localStorage.getItem('vibeTargetAddress');
+            if (!targetAddress) {
+                log('No target address set — skipping NFT mint', 'ERROR');
+                return;
+            }
+
+            // Mark chat as minting
+            const chat = storageData.chats.find(c => c.id === chatId);
+            if (chat) {
+                chat.nftStatus = 'minting';
+                saveData();
+                renderChatList();
+            }
+
+            log(`Minting NFT for Chat #${chatId} to ${targetAddress.slice(0, 6)}...${targetAddress.slice(-4)}`, 'INFO');
+
+            try {
+                const resp = await fetch('/.netlify/functions/mint', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chatId, duration, laughs, targetAddress }),
+                });
+
+                const result = await resp.json();
+
+                if (resp.ok && result.success) {
+                    log(`NFT minted! TX: ${result.txHash.slice(0, 10)}...`, 'SUCCESS');
+                    if (chat) {
+                        chat.nftStatus = 'minted';
+                        chat.txHash = result.txHash;
+                        chat.etherscanUrl = result.etherscanUrl;
+                        saveData();
+                        renderChatList();
+                    }
+                } else {
+                    log(`Mint failed: ${result.error || result.message}`, 'ERROR');
+                    if (chat) {
+                        chat.nftStatus = 'failed';
+                        saveData();
+                        renderChatList();
+                    }
+                }
+            } catch (err) {
+                log(`Mint error: ${err.message}`, 'ERROR');
+                if (chat) {
+                    chat.nftStatus = 'failed';
+                    saveData();
+                    renderChatList();
+                }
+            }
+        }
+
+        function formatDuration(ms) {
+            const totalSec = Math.floor(ms / 1000);
+            const h = Math.floor(totalSec / 3600);
+            const m = Math.floor((totalSec % 3600) / 60);
+            const s = totalSec % 60;
+            if (h > 0) return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            return `${m}:${String(s).padStart(2, '0')}`;
+        }
+
+        function renderChatList() {
+            const tbody = document.getElementById('chatTableBody');
+            const emptyMsg = document.getElementById('chatEmpty');
+            const countEl = document.getElementById('chatListCount');
+            const chats = storageData.chats;
+
+            countEl.textContent = `${chats.length} chat${chats.length !== 1 ? 's' : ''}`;
+
+            if (chats.length === 0) {
+                tbody.innerHTML = '';
+                emptyMsg.style.display = 'block';
+                document.getElementById('chatTable').style.display = 'none';
+                return;
+            }
+
+            emptyMsg.style.display = 'none';
+            document.getElementById('chatTable').style.display = 'table';
+
+            // Show newest first
+            const sorted = [...chats].reverse();
+            tbody.innerHTML = sorted.map(chat => {
+                const isLive = chat.endTime === null;
+                const duration = isLive
+                    ? Date.now() - chat.startTime
+                    : chat.endTime - chat.startTime;
+                const durationStr = formatDuration(duration);
+                return `
+                    <tr class="${isLive ? 'active-chat' : ''}">
+                        <td><span class="live-dot ${isLive ? 'live' : 'ended'}"></span></td>
+                        <td>${chat.id}</td>
+                        <td class="${isLive ? 'chat-duration-live' : ''}">${durationStr}</td>
+                        <td>${chat.laughs}</td>
+                        <td>${renderNFTCell(chat)}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function renderNFTCell(chat) {
+            if (chat.nftStatus === 'minting') {
+                return '<div class="nft-minting"><span class="spinner"></span> Minting</div>';
+            }
+            if (chat.nftStatus === 'minted' && chat.etherscanUrl) {
+                return `<a href="${chat.etherscanUrl}" target="_blank" class="nft-link" title="View on Etherscan">🟢 View</a>`;
+            }
+            if (chat.nftStatus === 'failed') {
+                return '<span style="color:#f85149; font-size:12px;" title="Minting failed">✕ Failed</span>';
+            }
+            return '<div class="nft-placeholder">◆</div>';
+        }
+
+        // --- Target address management ---
+        function initTargetAddress() {
+            const saved = localStorage.getItem('vibeTargetAddress');
+            const input = document.getElementById('targetAddressInput');
+            const status = document.getElementById('addrStatus');
+            if (saved) {
+                input.value = saved;
+                input.classList.add('saved');
+                status.textContent = '✓ Saved';
+                status.className = 'addr-status ok';
+            }
+        }
+
+        document.getElementById('saveAddressBtn').addEventListener('click', () => {
+            const input = document.getElementById('targetAddressInput');
+            const status = document.getElementById('addrStatus');
+            const addr = input.value.trim();
+
+            if (!addr.match(/^0x[a-fA-F0-9]{40}$/)) {
+                status.textContent = 'Invalid address';
+                status.className = 'addr-status';
+                status.style.color = '#f85149';
+                return;
+            }
+
+            localStorage.setItem('vibeTargetAddress', addr);
+            input.classList.add('saved');
+            status.textContent = '✓ Saved';
+            status.className = 'addr-status ok';
+            status.style.color = '';
+            log(`Target address set: ${addr.slice(0, 6)}...${addr.slice(-4)}`, 'SUCCESS');
+        });
+
         // Initialize
         loadData();
-        
+        initTargetAddress();
+
         // RULE 5: Prevent errors - Check browser compatibility
         if (!navigator.bluetooth) {
             log('Web Bluetooth not supported in this browser', 'ERROR');
@@ -807,4 +1414,5 @@
         }
     </script>
 </body>
+
 </html>
