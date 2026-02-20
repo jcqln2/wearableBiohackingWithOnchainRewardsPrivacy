@@ -1,51 +1,71 @@
-# Nervous System Happiness Dashboard
+# Pingl 🧠
 
-A **Looker-style web dashboard** that displays **biometric data** for “how happy your nervous system is,” driven by **sound data from an Arduino**. The UI uses a clean, data-focused layout with KPI cards, time-range filters, and charts.
+**A wearable that rewards real human connection**
 
-## What it does
+Privacy-first device that detects genuine, in-person conversations and rewards them with onchain incentives.
 
-- **Front end**: Looker-inspired layout (sidebar, top bar, filter bar, KPI tiles, chart grid).
-- **Metrics**: Nervous system score, HRV proxy, coherence, stress level, relaxation index, breathing rate — all framed as derived from Arduino sound input.
-- **Data**: Currently uses **mock time-series data** that simulates live Arduino/biometric streams. You can replace this with real Arduino data (see below).
+**Optimize for human time — not screen time.**
 
-## Run locally
+## What It Does
 
-```bash
-npm install
-npm run dev
-```
+Pingl is a small wearable that:
 
-Open the URL shown (e.g. `http://localhost:5173`).
+- Listens to sound **shape & dynamics** (never content)
+- Detects patterns of real, positive social interaction:
+  - Natural back-and-forth
+  - Shared laughter
+  - Sustained friendly engagement
+- Logs verified moments locally
+- Issues **onchain rewards** for meaningful real-world connection
 
-## Hooking up real Arduino sound data
+No microphones storing audio. No speech recognition. No cloud upload.
 
-1. **Send data from Arduino** (or a small gateway) to your app, e.g.:
-   - WebSocket server that the dashboard connects to.
-   - REST API that the dashboard polls.
-   - Serial over USB to a local Node/Python script that forwards to the above.
+## How It Works
 
-2. **Data shape**: Each reading should match the `BiometricSnapshot` type in `src/types.ts`:
+- Built on Arduino + sound sensors
+- All analysis happens **on-device**
+- Uses lightweight sound pattern detection (amplitude, cadence, turn-taking)
+- Creates verifiable "Proof of Connection" events
+- Rewards minted onchain when interactions meet quality thresholds
 
-   - `timestamp`: number (Unix ms)
-   - `nervousSystemScore`: 0–100
-   - `hrvProxy`: number (e.g. ms)
-   - `coherence`: 0–1
-   - `stressLevel`: 0–100
-   - `relaxationIndex`: 0–100
-   - `breathingRate`: breaths/min
-   - `audioLevel`: raw level (e.g. 0–1)
+**Zero internet required during detection.**
 
-3. **Replace mock data**: Swap `generateMockBiometricSeries` / `getLatestSnapshot` in `App.tsx` for state updated from your WebSocket or API (e.g. append to a `series` array and use the last item for KPIs).
+## Privacy by Design
 
-## Stack
+- ❌ No audio recording
+- ❌ No speech-to-text
+- ❌ No content understanding
+- ❌ No cloud audio storage
+- ✅ Only anonymous interaction metadata
+- ✅ Local processing only
 
-- **Vite** + **React** (TypeScript)
-- **Recharts** for area and pie charts
-- CSS variables for Looker-like theme (sidebar, cards, borders, accent color)
+Pingl knows *that* you connected — never *what* you said.
 
-## Build
+## Why It Matters
 
-```bash
-npm run build
-npm run preview   # optional: preview production build
-```
+Social media rewards isolation and performance.  
+Pingl flips the model:
+
+- Rewards talking to strangers
+- Rewards being present
+- Rewards real laughter and connection
+- Bridges physical presence → onchain value
+
+## Vision — Proof of Connection
+
+A new primitive for the onchain world:
+
+- Social capital becomes measurable & rewardable
+- Technology starts encouraging presence instead of distraction
+- Real-world relationships gain verifiable, economic weight
+
+## Tech Stack (so far)
+
+- Arduino microcontroller
+- Sound sensor / microphone module
+- Local signal processing
+- Onchain reward integration (TBD: chain + contract)
+
+---
+
+Pingl — because the best moments shouldn’t just be memories… they should be **rewarded**.
