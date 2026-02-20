@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pingl - connect irl for onchain rewards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,134 +16,133 @@
         }
 
         body {
-            background: #0d1117;
-            color: #58a6ff;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
+            background: #050507;
+            color: #e4e4e7;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 32px 24px;
             min-height: 100vh;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 960px;
             margin: 0 auto;
         }
 
-        /* RULE 1: Strive for consistency - Consistent header structure */
         .header {
-            border: 2px solid #58a6ff;
-            padding: 24px;
-            margin-bottom: 24px;
-            background: #161b22;
-            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 32px 28px;
+            margin-bottom: 28px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
         }
 
         .header h1 {
-            font-size: 28px;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            color: #58a6ff;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            color: #fafafa;
         }
 
         .header .subtitle {
-            color: #8b949e;
+            color: #71717a;
             font-size: 14px;
+            font-weight: 500;
             margin-bottom: 16px;
         }
 
-        /* RULE 2: Universal usability - Clear instructions for all users */
         .instructions {
-            background: #1f2937;
-            border-left: 4px solid #58a6ff;
-            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 18px;
             margin-bottom: 16px;
             font-size: 13px;
-            color: #c9d1d9;
+            color: #a1a1aa;
+            border-radius: 0 8px 8px 0;
         }
 
         .instructions strong {
-            color: #58a6ff;
+            color: #fafafa;
+            font-weight: 600;
         }
 
-        /* RULE 3: Offer informative feedback - Enhanced status display */
         .status-bar {
-            border: 2px solid #58a6ff;
-            padding: 20px;
-            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 24px 28px;
+            margin-bottom: 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #161b22;
-            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
         }
 
         .status {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             flex: 1;
         }
 
         .status-indicator {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
 
         .status-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: #f85149;
+            background: #f87171;
             animation: pulse 2s infinite;
         }
 
         .status-dot.connected {
-            background: #3fb950;
+            background: #4ade80;
             animation: none;
+            box-shadow: 0 0 12px rgba(74, 222, 128, 0.4);
         }
 
         .status-text {
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 15px;
+            font-weight: 600;
+            color: #fafafa;
         }
 
         .status-subtext {
-            font-size: 11px;
-            color: #8b949e;
+            font-size: 12px;
+            color: #71717a;
+            font-weight: 500;
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
-        /* RULE 4: Design dialogs to yield closure - Clear action button */
         button {
-            background: #238636;
-            border: 2px solid #2ea043;
-            color: #ffffff;
+            background: #fafafa;
+            border: none;
+            color: #050507;
             padding: 12px 24px;
-            font-family: 'Courier New', Courier, monospace;
-            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
             font-size: 14px;
-            font-weight: bold;
-            border-radius: 6px;
-            transition: all 0.2s;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.2s ease;
             min-width: 180px;
         }
 
         button:hover:not(:disabled) {
-            background: #2ea043;
+            background: #e4e4e7;
             transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(35, 134, 54, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
         }
 
         button:active:not(:disabled) {
@@ -148,264 +150,273 @@
         }
 
         button:disabled {
-            background: #21262d;
-            border-color: #30363d;
-            color: #484f58;
+            background: rgba(255, 255, 255, 0.06);
+            color: #71717a;
             cursor: not-allowed;
         }
 
         button.disconnect {
-            background: #da3633;
-            border-color: #f85149;
+            background: rgba(248, 113, 113, 0.15);
+            color: #f87171;
         }
 
         button.disconnect:hover:not(:disabled) {
-            background: #f85149;
+            background: rgba(248, 113, 113, 0.25);
+            color: #fca5a5;
         }
 
-        /* RULE 5: Prevent errors - Clear visual hierarchy and labels */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
         .card {
-            border: 2px solid #30363d;
-            padding: 24px;
-            background: #161b22;
-            border-radius: 6px;
-            transition: border-color 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
         .card:hover {
-            border-color: #58a6ff;
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
         }
 
         .card-header {
-            font-size: 12px;
-            letter-spacing: 1px;
-            color: #8b949e;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            color: #71717a;
             margin-bottom: 12px;
             text-transform: uppercase;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .card-value {
-            font-size: 48px;
-            margin-bottom: 8px;
-            color: #58a6ff;
-            font-weight: bold;
-            font-family: 'Courier New', Courier, monospace;
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+            color: #fafafa;
         }
 
         .card-label {
-            font-size: 14px;
-            color: #8b949e;
+            font-size: 13px;
+            color: #71717a;
             margin-bottom: 16px;
+            font-weight: 500;
         }
 
-        /* RULE 3: Informative feedback - Clear comparison indicators */
         .comparison {
             font-size: 13px;
             margin-top: 12px;
-            padding: 8px 12px;
-            border-radius: 4px;
-            background: #21262d;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
         .comparison-icon {
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .comparison.positive {
-            background: rgba(63, 185, 80, 0.15);
-            border-left: 3px solid #3fb950;
+            background: rgba(74, 222, 128, 0.08);
+            border-left: 3px solid #4ade80;
         }
 
         .comparison.positive .comparison-icon {
-            color: #3fb950;
+            color: #4ade80;
         }
 
         .comparison.negative {
-            background: rgba(248, 81, 73, 0.15);
-            border-left: 3px solid #f85149;
+            background: rgba(248, 113, 113, 0.08);
+            border-left: 3px solid #f87171;
         }
 
         .comparison.negative .comparison-icon {
-            color: #f85149;
+            color: #f87171;
         }
 
         .comparison.neutral {
-            background: rgba(139, 148, 158, 0.15);
-            border-left: 3px solid #8b949e;
+            background: rgba(255, 255, 255, 0.04);
+            border-left: 3px solid #71717a;
         }
 
         .comparison.neutral .comparison-icon {
-            color: #8b949e;
+            color: #71717a;
         }
 
-        /* RULE 6: Permit easy reversal - Clear action log */
         .activity-log {
-            border: 2px solid #30363d;
-            border-radius: 6px;
-            background: #0d1117;
-            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            margin-bottom: 28px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
         }
 
         .activity-log-header {
-            padding: 16px 20px;
-            border-bottom: 1px solid #30363d;
+            padding: 18px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #161b22;
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .activity-log-title {
             font-size: 14px;
-            font-weight: bold;
-            color: #c9d1d9;
+            font-weight: 600;
+            color: #fafafa;
         }
 
         .clear-log-btn {
             background: transparent;
-            border: 1px solid #30363d;
-            color: #8b949e;
-            padding: 6px 12px;
-            font-size: 11px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #71717a;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 8px;
             min-width: auto;
         }
 
         .clear-log-btn:hover:not(:disabled) {
-            background: #21262d;
-            border-color: #58a6ff;
-            color: #58a6ff;
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: #fafafa;
             transform: none;
             box-shadow: none;
         }
 
         .terminal {
-            padding: 16px 20px;
+            padding: 18px 24px;
             height: 240px;
             overflow-y: auto;
             font-size: 12px;
+            font-weight: 500;
         }
 
         .terminal-line {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: flex;
             gap: 12px;
             align-items: flex-start;
         }
 
         .terminal-line .timestamp {
-            color: #8b949e;
+            color: #71717a;
             min-width: 80px;
             font-size: 11px;
         }
 
         .terminal-line .type {
-            color: #58a6ff;
+            color: #a1a1aa;
             min-width: 60px;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .terminal-line.success .type {
-            color: #3fb950;
+            color: #4ade80;
         }
 
         .terminal-line.error .type {
-            color: #f85149;
+            color: #f87171;
         }
 
         .terminal-line .message {
-            color: #c9d1d9;
+            color: #a1a1aa;
             flex: 1;
         }
 
-        /* RULE 7: Keep users in control - Clear data management */
         .controls {
             display: flex;
             gap: 12px;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             flex-wrap: wrap;
         }
 
         .control-btn {
-            background: transparent;
-            border: 2px solid #30363d;
-            color: #8b949e;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a1a1aa;
             padding: 10px 20px;
             min-width: auto;
             font-size: 13px;
+            font-weight: 500;
+            border-radius: 10px;
         }
 
         .control-btn:hover:not(:disabled) {
-            background: #21262d;
-            border-color: #58a6ff;
-            color: #58a6ff;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: #fafafa;
             transform: none;
             box-shadow: none;
         }
 
-        /* RULE 8: Reduce short-term memory load - Everything visible */
         .help-section {
-            border: 2px solid #30363d;
-            padding: 16px 20px;
-            background: #161b22;
-            border-radius: 6px;
-            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 20px 24px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(12px);
         }
 
         .help-title {
             font-size: 14px;
-            font-weight: bold;
-            color: #58a6ff;
+            font-weight: 600;
+            color: #fafafa;
             margin-bottom: 12px;
         }
 
         .help-content {
-            font-size: 12px;
-            color: #8b949e;
+            font-size: 13px;
+            color: #71717a;
             line-height: 1.8;
+            font-weight: 500;
         }
 
         .help-content strong {
-            color: #c9d1d9;
+            color: #e4e4e7;
         }
 
         .footer {
             text-align: center;
-            padding: 24px;
-            font-size: 11px;
-            color: #8b949e;
-            border-top: 1px solid #30363d;
+            padding: 28px;
+            font-size: 12px;
+            color: #71717a;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-weight: 500;
         }
 
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
+            height: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #0d1117;
+            background: transparent;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #30363d;
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #58a6ff;
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Loading state */
         .loading {
             opacity: 0.6;
             pointer-events: none;
@@ -415,30 +426,28 @@
             display: inline-block;
             width: 14px;
             height: 14px;
-            border: 2px solid #30363d;
-            border-top-color: #58a6ff;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-top-color: #fafafa;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
 
         @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            to { transform: rotate(360deg); }
         }
 
-        /* Chat list table */
         .chat-list {
-            border: 2px solid #30363d;
-            border-radius: 6px;
-            background: #161b22;
-            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            margin-bottom: 28px;
             overflow: hidden;
+            backdrop-filter: blur(12px);
         }
 
         .chat-list-header {
-            padding: 16px 20px;
-            border-bottom: 1px solid #30363d;
+            padding: 18px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -446,17 +455,18 @@
 
         .chat-list-title {
             font-size: 14px;
-            font-weight: bold;
-            color: #c9d1d9;
-            letter-spacing: 1px;
+            font-weight: 600;
+            color: #fafafa;
+            letter-spacing: 0;
         }
 
         .chat-list-count {
             font-size: 11px;
-            color: #8b949e;
-            background: #21262d;
-            padding: 3px 10px;
-            border-radius: 10px;
+            font-weight: 500;
+            color: #71717a;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 4px 12px;
+            border-radius: 20px;
         }
 
         .chat-table {
@@ -465,23 +475,24 @@
         }
 
         .chat-table th {
-            padding: 10px 16px;
+            padding: 12px 20px;
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #8b949e;
+            letter-spacing: 0.06em;
+            color: #71717a;
             text-align: left;
-            border-bottom: 1px solid #30363d;
-            background: #0d1117;
-            font-weight: bold;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.02);
+            font-weight: 600;
         }
 
         .chat-table td {
-            padding: 12px 16px;
+            padding: 14px 20px;
             font-size: 13px;
-            color: #c9d1d9;
-            border-bottom: 1px solid #21262d;
+            color: #e4e4e7;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             vertical-align: middle;
+            font-weight: 500;
         }
 
         .chat-table tr:last-child td {
@@ -489,148 +500,145 @@
         }
 
         .chat-table tr:hover {
-            background: rgba(88, 166, 255, 0.04);
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .chat-table tr.active-chat {
-            background: rgba(63, 185, 80, 0.06);
+            background: rgba(74, 222, 128, 0.06);
         }
 
         .chat-table tr.active-chat:hover {
-            background: rgba(63, 185, 80, 0.1);
+            background: rgba(74, 222, 128, 0.1);
         }
 
         .live-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             display: inline-block;
         }
 
         .live-dot.live {
-            background: #3fb950;
-            box-shadow: 0 0 6px rgba(63, 185, 80, 0.6);
+            background: #4ade80;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
             animation: pulse-live 1.5s ease-in-out infinite;
         }
 
         .live-dot.ended {
-            background: #484f58;
+            background: #71717a;
         }
 
         @keyframes pulse-live {
-
-            0%,
-            100% {
-                opacity: 1;
-                box-shadow: 0 0 6px rgba(63, 185, 80, 0.6);
-            }
-
-            50% {
-                opacity: 0.7;
-                box-shadow: 0 0 12px rgba(63, 185, 80, 0.9);
-            }
+            0%, 100% { opacity: 1; box-shadow: 0 0 10px rgba(74, 222, 128, 0.5); }
+            50% { opacity: 0.8; box-shadow: 0 0 16px rgba(74, 222, 128, 0.7); }
         }
 
         .nft-placeholder {
             width: 36px;
             height: 36px;
-            border-radius: 4px;
-            background: linear-gradient(135deg, #21262d 0%, #30363d 100%);
-            border: 1px solid #30363d;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 16px;
-            color: #484f58;
+            color: #71717a;
         }
 
         .chat-empty {
-            padding: 32px 20px;
+            padding: 36px 24px;
             text-align: center;
-            color: #484f58;
+            color: #71717a;
             font-size: 13px;
+            font-weight: 500;
         }
 
         .chat-duration-live {
-            color: #3fb950;
-            font-weight: bold;
+            color: #4ade80;
+            font-weight: 600;
         }
 
-        /* Target address input */
         .target-address-bar {
-            border: 2px solid #30363d;
-            padding: 16px 20px;
-            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 18px 24px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            background: #161b22;
-            border-radius: 6px;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
         }
 
         .target-address-bar label {
-            font-size: 13px;
-            font-weight: bold;
-            color: #c9d1d9;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: #71717a;
             white-space: nowrap;
-            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .target-address-bar input {
             width: 200px;
-            padding: 8px 12px;
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 4px;
-            color: #c9d1d9;
-            font-family: 'Courier New', Courier, monospace;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fafafa;
+            font-family: inherit;
             font-size: 13px;
+            font-weight: 500;
             outline: none;
             transition: border-color 0.2s;
         }
 
         .target-address-bar input:focus {
-            border-color: #58a6ff;
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
         .target-address-bar input.saved {
-            border-color: #3fb950;
+            border-color: #4ade80;
         }
 
         .target-address-bar .ok-btn {
-            background: #238636;
-            border: 2px solid #2ea043;
-            color: #fff;
-            padding: 8px 16px;
-            font-family: 'Courier New', Courier, monospace;
+            background: #fafafa;
+            border: none;
+            color: #050507;
+            padding: 10px 18px;
+            font-family: inherit;
             cursor: pointer;
             font-size: 13px;
-            font-weight: bold;
-            border-radius: 4px;
+            font-weight: 600;
+            border-radius: 10px;
             min-width: auto;
             transition: all 0.2s;
         }
 
         .target-address-bar .ok-btn:hover {
-            background: #2ea043;
+            background: #e4e4e7;
         }
 
         .target-address-bar .addr-status {
-            font-size: 11px;
-            color: #8b949e;
+            font-size: 12px;
+            color: #71717a;
+            font-weight: 500;
         }
 
         .target-address-bar .addr-status.ok {
-            color: #3fb950;
+            color: #4ade80;
         }
 
         .nft-link {
-            color: #58a6ff;
+            color: #a1a1aa;
             text-decoration: none;
             font-size: 12px;
+            font-weight: 500;
         }
 
         .nft-link:hover {
+            color: #fafafa;
             text-decoration: underline;
         }
 
@@ -638,31 +646,41 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 11px;
-            color: #8b949e;
+            font-size: 12px;
+            color: #71717a;
+            font-weight: 500;
         }
 
-        /* Mobile Responsiveness */
+        #silenceCountdown {
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            padding: 16px 24px !important;
+            margin-bottom: 28px !important;
+            background: rgba(255, 255, 255, 0.02) !important;
+            border-radius: 16px !important;
+            backdrop-filter: blur(12px);
+        }
+
         @media (max-width: 600px) {
             body {
-                padding: 12px;
+                padding: 20px 16px;
             }
 
             .header {
-                padding: 16px;
-                margin-bottom: 16px;
+                padding: 24px 20px;
+                margin-bottom: 20px;
+                border-radius: 12px;
             }
 
             .header h1 {
-                font-size: 24px;
+                font-size: 26px;
             }
 
-            /* Stack elements neatly */
             .status-bar {
                 flex-direction: column;
                 gap: 16px;
                 align-items: stretch;
                 text-align: center;
+                border-radius: 12px;
             }
 
             .status {
@@ -679,6 +697,7 @@
                 flex-direction: column;
                 align-items: stretch;
                 gap: 12px;
+                border-radius: 12px;
             }
 
             .target-address-bar input {
@@ -688,18 +707,18 @@
 
             .target-address-bar label {
                 text-align: center;
-                margin-bottom: -6px;
+                margin-bottom: -4px;
             }
 
-            /* Make table scannable and scrollable */
             .chat-list {
                 overflow-x: auto;
+                border-radius: 12px;
             }
 
             .chat-table th,
             .chat-table td {
-                padding: 8px;
-                font-size: 11px;
+                padding: 10px 14px;
+                font-size: 12px;
             }
 
             .grid {
@@ -716,8 +735,386 @@
             }
 
             .help-section {
-                padding: 12px;
+                padding: 16px 20px;
+                border-radius: 12px;
             }
+        }
+
+        /* Theme toggle */
+        .theme-toggle-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .theme-toggle-wrap span {
+            font-size: 12px;
+            font-weight: 500;
+            color: #71717a;
+        }
+
+        .theme-toggle {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            background: #fafafa;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle[aria-pressed="true"]::after {
+            transform: translateX(20px);
+        }
+
+        body.light-mode .theme-toggle {
+            background: rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.12);
+        }
+
+        body.light-mode .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        body.light-mode .theme-toggle::after {
+            background: #09090b;
+        }
+
+        body.light-mode .theme-toggle-wrap span {
+            color: #71717a;
+        }
+
+        /* Light mode overrides */
+        body.light-mode {
+            background: #f4f4f5;
+            color: #18181b;
+        }
+
+        body.light-mode .header {
+            border-color: rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+        }
+
+        body.light-mode .header h1 {
+            color: #09090b;
+        }
+
+        body.light-mode .header .subtitle {
+            color: #71717a;
+        }
+
+        body.light-mode .instructions {
+            background: rgba(0, 0, 0, 0.04);
+            border-left-color: rgba(0, 0, 0, 0.2);
+            color: #52525b;
+        }
+
+        body.light-mode .instructions strong {
+            color: #09090b;
+        }
+
+        body.light-mode .status-bar {
+            border-color: rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+        }
+
+        body.light-mode .status-text {
+            color: #09090b;
+        }
+
+        body.light-mode .status-subtext {
+            color: #71717a;
+        }
+
+        body.light-mode button {
+            background: #09090b;
+            color: #fafafa;
+        }
+
+        body.light-mode button:hover:not(:disabled) {
+            background: #27272a;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        body.light-mode button:disabled {
+            background: rgba(0, 0, 0, 0.06);
+            color: #a1a1aa;
+        }
+
+        body.light-mode button.disconnect {
+            background: rgba(239, 68, 68, 0.12);
+            color: #dc2626;
+        }
+
+        body.light-mode button.disconnect:hover:not(:disabled) {
+            background: rgba(239, 68, 68, 0.2);
+            color: #b91c1c;
+        }
+
+        body.light-mode .card {
+            border-color: rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+        }
+
+        body.light-mode .card:hover {
+            border-color: rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-mode .card-header {
+            color: #71717a;
+        }
+
+        body.light-mode .card-value {
+            color: #09090b;
+        }
+
+        body.light-mode .card-label {
+            color: #71717a;
+        }
+
+        body.light-mode .comparison {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+
+        body.light-mode .comparison.positive {
+            background: rgba(34, 197, 94, 0.1);
+            border-left-color: #22c55e;
+        }
+
+        body.light-mode .comparison.positive .comparison-icon {
+            color: #22c55e;
+        }
+
+        body.light-mode .comparison.negative {
+            background: rgba(239, 68, 68, 0.1);
+            border-left-color: #ef4444;
+        }
+
+        body.light-mode .comparison.negative .comparison-icon {
+            color: #ef4444;
+        }
+
+        body.light-mode .comparison.neutral {
+            background: rgba(0, 0, 0, 0.04);
+            border-left-color: #71717a;
+        }
+
+        body.light-mode .activity-log {
+            border-color: rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+        }
+
+        body.light-mode .activity-log-header {
+            border-bottom-color: rgba(0, 0, 0, 0.06);
+            background: #fafafa;
+        }
+
+        body.light-mode .activity-log-title {
+            color: #09090b;
+        }
+
+        body.light-mode .clear-log-btn {
+            border-color: rgba(0, 0, 0, 0.12);
+            color: #71717a;
+        }
+
+        body.light-mode .clear-log-btn:hover:not(:disabled) {
+            background: rgba(0, 0, 0, 0.06);
+            border-color: rgba(0, 0, 0, 0.15);
+            color: #09090b;
+        }
+
+        body.light-mode .terminal-line .timestamp {
+            color: #71717a;
+        }
+
+        body.light-mode .terminal-line .type {
+            color: #52525b;
+        }
+
+        body.light-mode .terminal-line .message {
+            color: #52525b;
+        }
+
+        body.light-mode .terminal-line.success .type {
+            color: #22c55e;
+        }
+
+        body.light-mode .terminal-line.error .type {
+            color: #ef4444;
+        }
+
+        body.light-mode .control-btn {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.1);
+            color: #52525b;
+        }
+
+        body.light-mode .control-btn:hover:not(:disabled) {
+            background: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.15);
+            color: #09090b;
+        }
+
+        body.light-mode .help-section {
+            border-color: rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+        }
+
+        body.light-mode .help-title {
+            color: #09090b;
+        }
+
+        body.light-mode .help-content {
+            color: #71717a;
+        }
+
+        body.light-mode .help-content strong {
+            color: #18181b;
+        }
+
+        body.light-mode .footer {
+            color: #71717a;
+            border-top-color: rgba(0, 0, 0, 0.06);
+        }
+
+        body.light-mode ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        body.light-mode .spinner {
+            border-color: rgba(0, 0, 0, 0.15);
+            border-top-color: #09090b;
+        }
+
+        body.light-mode .chat-list {
+            border-color: rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+        }
+
+        body.light-mode .chat-list-header {
+            border-bottom-color: rgba(0, 0, 0, 0.06);
+        }
+
+        body.light-mode .chat-list-title {
+            color: #09090b;
+        }
+
+        body.light-mode .chat-list-count {
+            color: #71717a;
+            background: rgba(0, 0, 0, 0.06);
+        }
+
+        body.light-mode .chat-table th {
+            color: #71717a;
+            border-bottom-color: rgba(0, 0, 0, 0.06);
+            background: #fafafa;
+        }
+
+        body.light-mode .chat-table td {
+            color: #18181b;
+            border-bottom-color: rgba(0, 0, 0, 0.04);
+        }
+
+        body.light-mode .chat-table tr:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        body.light-mode .chat-table tr.active-chat {
+            background: rgba(34, 197, 94, 0.08);
+        }
+
+        body.light-mode .chat-table tr.active-chat:hover {
+            background: rgba(34, 197, 94, 0.12);
+        }
+
+        body.light-mode .live-dot.ended {
+            background: #71717a;
+        }
+
+        body.light-mode .nft-placeholder {
+            background: rgba(0, 0, 0, 0.06);
+            border-color: rgba(0, 0, 0, 0.1);
+            color: #71717a;
+        }
+
+        body.light-mode .chat-empty {
+            color: #71717a;
+        }
+
+        body.light-mode .chat-duration-live {
+            color: #22c55e;
+        }
+
+        body.light-mode .target-address-bar {
+            border-color: rgba(0, 0, 0, 0.08);
+            background: #ffffff;
+        }
+
+        body.light-mode .target-address-bar input {
+            background: #f4f4f5;
+            border-color: rgba(0, 0, 0, 0.12);
+            color: #09090b;
+        }
+
+        body.light-mode .target-address-bar input:focus {
+            border-color: rgba(0, 0, 0, 0.25);
+        }
+
+        body.light-mode .target-address-bar .ok-btn {
+            background: #09090b;
+            color: #fafafa;
+        }
+
+        body.light-mode .target-address-bar .ok-btn:hover {
+            background: #27272a;
+        }
+
+        body.light-mode .target-address-bar .addr-status.ok {
+            color: #22c55e;
+        }
+
+        body.light-mode .nft-link {
+            color: #52525b;
+        }
+
+        body.light-mode .nft-link:hover {
+            color: #09090b;
+        }
+
+        body.light-mode .nft-minting {
+            color: #71717a;
+        }
+
+        body.light-mode #silenceCountdown {
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            background: #ffffff !important;
         }
     </style>
 </head>
@@ -726,7 +1123,11 @@
     <div class="container">
         <div class="header">
             <h1>pingl</h1>
-            <div class="subtitle">Proof of fun v1.0</div>
+            <div class="subtitle">Proof of irl connection v1.0</div>
+            <div class="theme-toggle-wrap">
+                <span>Light mode</span>
+                <button type="button" class="theme-toggle" id="themeToggle" role="switch" aria-label="Toggle light mode" aria-pressed="false" title="Toggle light/dark mode"></button>
+            </div>
             <div class="instructions">
                 <strong>Quick Start:</strong> Click "Connect to Device" below. Select "Arduino" from the Bluetooth
                 pairing menu
@@ -752,15 +1153,15 @@
         </div>
 
         <div id="silenceCountdown"
-            style="display:none; border:2px solid #30363d; padding:12px 20px; margin-bottom:24px; background:#161b22; border-radius:6px;">
+            style="display:none;">
             <div
-                style="font-size:12px; color:#8b949e; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
-                <span style="font-weight:bold; letter-spacing:1px; text-transform:uppercase;">Time to next chat</span>
-                <span id="silenceSeconds" style="color:#f0883e; font-weight:bold; font-size:14px;">15s</span>
+                style="font-size:12px; color:#71717a; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:600; letter-spacing:0.08em; text-transform:uppercase;">Time to next chat</span>
+                <span id="silenceSeconds" style="color:#fbbf24; font-weight:600; font-size:14px;">15s</span>
             </div>
-            <div style="height:6px; background:#21262d; border-radius:3px; overflow:hidden;">
+            <div style="height:6px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden;">
                 <div id="silenceBar"
-                    style="height:100%; width:100%; background:#f0883e; border-radius:3px; transition:width 1s linear;">
+                    style="height:100%; width:100%; background:#fbbf24; border-radius:4px; transition:width 1s linear;">
                 </div>
             </div>
         </div>
@@ -776,7 +1177,7 @@
                         <th style="width:50px">Live</th>
                         <th style="width:60px">#</th>
                         <th>Duration</th>
-                        <th>Laughs</th>
+                        <th>Sounds of joy</th>
                         <th style="width:60px">NFT</th>
                     </tr>
                 </thead>
@@ -790,7 +1191,7 @@
             <div class="help-title">About This Data</div>
             <div class="help-content">
                 <strong>Chat Time:</strong> Seconds of conversation detected today<br>
-                <strong>Laughter:</strong> Number of laughter events detected today<br>
+                <strong>Amount of joy:</strong> # of joyful chats detected today<br>
                 <strong>Comparisons:</strong> Show change from previous day/week/month<br>
                 Data is stored locally in your browser and updates every 5 seconds when connected.
             </div>
@@ -808,9 +1209,9 @@
             </div>
 
             <div class="card">
-                <div class="card-header">Today's Laughter Total</div>
+                <div class="card-header">Good Vibes Total</div>
                 <div class="card-value" id="todayLaughs">0</div>
-                <div class="card-label">laughter events detected</div>
+                <div class="card-label">sounds of joyful conversations detected</div>
                 <div class="comparison neutral" id="laughComparison">
                     <span class="comparison-icon">−</span>
                     <span>No previous data available</span>
@@ -822,8 +1223,8 @@
                 <div class="card-value" id="todayChats">0</div>
                 <div class="card-label">conversations detected</div>
                 <div id="chatStatusIndicator"
-                    style="font-size:13px; margin-top:12px; padding:8px 12px; border-radius:4px; background:#21262d; display:flex; align-items:center; gap:8px;">
-                    <span style="color:#8b949e;">No active conversation</span>
+                    style="font-size:13px; margin-top:12px; padding:10px 14px; border-radius:10px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; gap:8px;">
+                    <span style="color:#71717a; font-weight:500;">No active conversation</span>
                 </div>
             </div>
         </div>
@@ -875,6 +1276,22 @@
     </div>
 
     <script>
+        (function initTheme() {
+            const STORAGE_KEY = 'pinglTheme';
+            const toggle = document.getElementById('themeToggle');
+            const isLight = localStorage.getItem(STORAGE_KEY) === 'light';
+            if (isLight) {
+                document.body.classList.add('light-mode');
+                toggle.setAttribute('aria-pressed', 'true');
+            }
+            toggle.addEventListener('click', function () {
+                document.body.classList.toggle('light-mode');
+                const isLightNow = document.body.classList.contains('light-mode');
+                toggle.setAttribute('aria-pressed', String(isLightNow));
+                localStorage.setItem(STORAGE_KEY, isLightNow ? 'light' : 'dark');
+            });
+        })();
+
         let device;
         let chatCharacteristic;
         let laughCharacteristic;
@@ -1135,7 +1552,7 @@
                 saveData();
             }
 
-            log(`Laughter update: ${value} events`, 'INFO');
+            log(`Sounds of joy update: ${value} events`, 'INFO');
         }
 
         function handleSilenceUpdate(event) {
@@ -1189,9 +1606,9 @@
             // Color shift: orange → red as it gets close
             const bar = document.getElementById('silenceBar');
             if (sec <= 5) {
-                bar.style.background = '#f85149';
+                bar.style.background = '#f87171';
             } else {
-                bar.style.background = '#f0883e';
+                bar.style.background = '#fbbf24';
             }
         }
 
@@ -1317,7 +1734,7 @@
             if (!activeChat) return;
             activeChat.endTime = Date.now();
             const duration = activeChat.endTime - activeChat.startTime;
-            log(`Chat #${activeChat.id} ended — ${formatDuration(duration)}, ${activeChat.laughs} laughs`, 'INFO');
+            log(`Chat #${activeChat.id} ended — ${formatDuration(duration)}, ${activeChat.laughs} sounds of joy`, 'INFO');
 
             // Mint NFT for this chat
             mintNFT(activeChat.id, duration, activeChat.laughs);
@@ -1446,12 +1863,12 @@
                 const imgUrl = "https://tan-selective-tiger-256.mypinata.cloud/ipfs/bafybeihbvrxhocnir23iyjhifof7jx57qhwxj4mfgrvj4qxgexbpppxhcy";
                 return `
                     <a href="${chat.nftTokenUrl}" target="_blank" title="View NFT on Etherscan">
-                        <img src="${imgUrl}" alt="NFT" style="width: 32px; height: 32px; border-radius: 4px; border: 1px solid #30363d; display: block; margin: 0 auto; transition: transform 0.2s, border-color 0.2s;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='#58a6ff';" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='#30363d';">
+                        <img src="${imgUrl}" alt="NFT" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: block; margin: 0 auto; transition: transform 0.2s, border-color 0.2s;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='rgba(255,255,255,0.25)';" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='rgba(255,255,255,0.1)';">
                     </a>
                 `;
             }
             if (chat.nftStatus === 'failed') {
-                return '<span style="color:#f85149; font-size:16px;" title="Minting failed">✕</span>';
+                return '<span style="color:#f87171; font-size:16px;" title="Minting failed">✕</span>';
             }
             return '<div class="nft-placeholder" style="margin: 0 auto;">◆</div>';
         }
@@ -1477,7 +1894,7 @@
             if (!addr.match(/^0x[a-fA-F0-9]{40}$/)) {
                 status.textContent = 'Invalid address';
                 status.className = 'addr-status';
-                status.style.color = '#f85149';
+                status.style.color = '#f87171';
                 return;
             }
 
