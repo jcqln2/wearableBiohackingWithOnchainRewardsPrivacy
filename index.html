@@ -1286,11 +1286,16 @@
                         chat.nftStatus = 'minted';
                         chat.txHash = result.txHash;
                         chat.etherscanUrl = result.etherscanUrl;
+                        // Construct the direct token URL
+                        const contractAddress = "0x69F71c136cBd3F2CBBccbE75E3fD46415b7B67D7";
+                        chat.nftTokenUrl = `https://sepolia.etherscan.io/nft/${contractAddress}/${chatId}`;
                         saveData();
                         renderChatList();
                     }
                 } else {
-                    log(`Mint failed: ${result.error || result.message}`, 'ERROR');
+                    const failReason = result.error || result.message || 'Unknown Server Error';
+                    log(`Mint failed: ${failReason}`, 'ERROR');
+                    console.error(`Minting failed for Chat #${chatId}. Reason:`, failReason, result);
                     if (chat) {
                         chat.nftStatus = 'failed';
                         saveData();
@@ -1299,6 +1304,7 @@
                 }
             } catch (err) {
                 log(`Mint error: ${err.message}`, 'ERROR');
+                console.error(`Minting exception for Chat #${chatId}. Error:`, err);
                 if (chat) {
                     chat.nftStatus = 'failed';
                     saveData();
@@ -1348,7 +1354,7 @@
                         <td>${chat.id}</td>
                         <td class="${isLive ? 'chat-duration-live' : ''}">${durationStr}</td>
                         <td>${chat.laughs}</td>
-                        <td>${renderNFTCell(chat)}</td>
+                        <td style="text-align: center;">${renderNFTCell(chat)}</td>
                     </tr>
                 `;
             }).join('');
@@ -1356,15 +1362,20 @@
 
         function renderNFTCell(chat) {
             if (chat.nftStatus === 'minting') {
-                return '<div class="nft-minting"><span class="spinner"></span> Minting</div>';
+                return '<div class="nft-minting"><span class="spinner"></span></div>';
             }
-            if (chat.nftStatus === 'minted' && chat.etherscanUrl) {
-                return `<a href="${chat.etherscanUrl}" target="_blank" class="nft-link" title="View on Etherscan">🟢 View</a>`;
+            if (chat.nftStatus === 'minted' && chat.nftTokenUrl) {
+                const imgUrl = "https://tan-selective-tiger-256.mypinata.cloud/ipfs/bafybeihbvrxhocnir23iyjhifof7jx57qhwxj4mfgrvj4qxgexbpppxhcy";
+                return `
+                    <a href="${chat.nftTokenUrl}" target="_blank" title="View NFT on Etherscan">
+                        <img src="${imgUrl}" alt="NFT" style="width: 32px; height: 32px; border-radius: 4px; border: 1px solid #30363d; display: block; margin: 0 auto; transition: transform 0.2s, border-color 0.2s;" onmouseover="this.style.transform='scale(1.1)'; this.style.borderColor='#58a6ff';" onmouseout="this.style.transform='scale(1)'; this.style.borderColor='#30363d';">
+                    </a>
+                `;
             }
             if (chat.nftStatus === 'failed') {
-                return '<span style="color:#f85149; font-size:12px;" title="Minting failed">✕ Failed</span>';
+                return '<span style="color:#f85149; font-size:16px;" title="Minting failed">✕</span>';
             }
-            return '<div class="nft-placeholder">◆</div>';
+            return '<div class="nft-placeholder" style="margin: 0 auto;">◆</div>';
         }
 
         // --- Target address management ---
