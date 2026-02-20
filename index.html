@@ -641,6 +641,84 @@
             font-size: 11px;
             color: #8b949e;
         }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
+            .header {
+                padding: 16px;
+                margin-bottom: 16px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            /* Stack elements neatly */
+            .status-bar {
+                flex-direction: column;
+                gap: 16px;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .status {
+                justify-content: center;
+                margin-bottom: 8px;
+            }
+
+            button {
+                width: 100%;
+                min-width: unset;
+            }
+
+            .target-address-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+
+            .target-address-bar input {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .target-address-bar label {
+                text-align: center;
+                margin-bottom: -6px;
+            }
+
+            /* Make table scannable and scrollable */
+            .chat-list {
+                overflow-x: auto;
+            }
+
+            .chat-table th,
+            .chat-table td {
+                padding: 8px;
+                font-size: 11px;
+            }
+
+            .grid {
+                gap: 16px;
+            }
+
+            .controls {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .control-btn {
+                width: 100%;
+            }
+
+            .help-section {
+                padding: 12px;
+            }
+        }
     </style>
 </head>
 
