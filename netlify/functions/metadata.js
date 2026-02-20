@@ -49,9 +49,7 @@ export const handler = async (event) => {
     const secs = totalSec % 60;
     const durationStr = `${mins}:${String(secs).padStart(2, "0")}`;
 
-    // Use the Netlify site URL or local dev URL for the image
-    const siteUrl = process.env.URL || "http://localhost:8888";
-    const imageUrl = `${siteUrl}/vibe-nft.png`;
+    const imageUrl = "https://tan-selective-tiger-256.mypinata.cloud/ipfs/bafybeihbvrxhocnir23iyjhifof7jx57qhwxj4mfgrvj4qxgexbpppxhcy";
 
     return {
         statusCode: 200,
