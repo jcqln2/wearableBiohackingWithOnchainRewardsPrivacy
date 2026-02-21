@@ -1,4 +1,4 @@
-# Pingl 🧠
+# Pingl 
 
 **A wearable that rewards real human connection**
 
@@ -22,13 +22,13 @@ No microphones storing audio. No speech recognition. No cloud upload.
 
 ## How It Works
 
-- Built on Arduino + sound sensors
+- Go to https://bejewelled-crisp-780ff5.netlify.app/ and connect to your device and start chatting
+- Built on arduinos with sound sensors
 - All analysis happens **on-device**
-- Uses lightweight sound pattern detection (amplitude, cadence, turn-taking)
-- Creates verifiable "Proof of Connection" events
-- Rewards minted onchain when interactions meet quality thresholds
+- Uses lightweight sound pattern detection 
+- Creates "Proof of Connection" events using sound data collected from builders
+- Rewards minted onchain when interactions meet quality thresholds 
 
-**Zero internet required during detection.**
 
 ## Privacy by Design
 
@@ -39,33 +39,25 @@ No microphones storing audio. No speech recognition. No cloud upload.
 - ✅ Only anonymous interaction metadata
 - ✅ Local processing only
 
-Pingl knows *that* you connected — never *what* you said.
+Pingl knows *a* friendly chat happened and you connected with someone, without reading any of the content of what was said.
 
 ## Why It Matters
 
 Social media rewards isolation and performance.  
-Pingl flips the model:
+Pingl wants to change people's behavior:
 
-- Rewards talking to strangers
+- Rewards talking to people irl
 - Rewards being present
-- Rewards real laughter and connection
-- Bridges physical presence → onchain value
+- Rewards authentic sounds of vibing such as laughter and warm vocal tones
+- combines physical presence with onchain collectables
 
 ## Vision — Proof of Connection
 
-A new primitive for the onchain world:
-
-- Social capital becomes measurable & rewardable
-- Technology starts encouraging presence instead of distraction
-- Real-world relationships gain verifiable, economic weight
+- Technology encouraging irl connection and presence instead of on-screen distraction
 
 ## Tech Stack (so far)
 
 - Arduino microcontroller
 - Sound sensor / microphone module
-- Local signal processing
-- Onchain reward integration (TBD: chain + contract)
-
----
-
-Pingl — because the best moments shouldn’t just be memories… they should be **rewarded**.
+- Local sound data processing
+- Onchain reward integration (Sepolia for now but any evm compatible chain)
